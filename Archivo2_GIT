@@ -1,60 +1,59 @@
 #include <stdio.h>
-
 int main(){
 
-    FILE *oldfile, *cc2File;
-    int numero;
-    char an;
-    cc1File = fopen("vector.txt", "r");
-    cc2File = fopen ("cc2File.txt", "r");
+    FILE *oldarch, *newarch;
+    int num;
+    char resp;
+    oldarch = fopen("vector.txt", "r");
+    newarch = fopen ("newarch.txt", "r");
 
-    if (cc2File != NULL){
-        printf("Ya existe el archivo cc2.txt ¿Desea reemplazarlo? (y/n)");
-        scanf( "%c", &an);
-        if(an == 'y'){
-            cc2File = fopen("cc2file.txt", "w");
-            if(cc1File = NULL || cc2File == NULL){
+    if (newarch != NULL){
+        printf("Ya existe el archivo newarch.txt ¿Desea reemplazarlo? (y/n)");
+        scanf( "%c", &resp);
+        if(resp == 'y'){
+            newarch = fopen("newarch.txt", "w");
+            if(oldarch = NULL || oldarch == NULL){
                 printf("Error al abrir el archivo \n");
                 return -1;
             }
 
-            while (fscanf(cc1File, "%d", &numero) == 1){
-                if (numero % 3 == 0){
+            while (fscanf(oldarch, "%d", &num) == 1){
+                if (num % 3 == 0){
 
                 }
             }
 
-            fclose(cc1File);
-            fclose (cc2File);
-            printf(" Se ha modificado el archivo cc2File.txt");
+            fclose(oldarch);
+            fclose (newarch);
+            printf(" Se ha modificado el archivo newarch.txt");
             return 0;
         }
         else{
-            printf("No se abrirá y reemplazará el archivo cc2File.txt");
+            printf("No se abrirá y reemplazará el archivo newarch.txt");
             return -1;
          }
     }
     else{
-        cc2File = fopen("cc2File.txt", "w");
-        if(cc1File == NULL || cc2File == NULL){
+        newarch = fopen("newarch.txt", "w");
+        if(oldarch == NULL || newarch == NULL){
             printf ("Error al abrir el achivo \n");
             return -1;
         }
 
-        while (fscanf(cc1File, "%d", &numero)  == 1){
-            if(numero % 3  == 0){
-                fprintf(cc2File, "%d multiplo de 3 \n", numero);
+        while (fscanf(oldarch, "%d", &num)  == 1){
+            if(num% 3  == 0){
+                fprintf(newarch, "%d multiplo de 3 \n", num);
             }
             else{
-                fprintf(cc2File,"%d\n", numero);
+                fprintf(newarch,"%d\n", num);
             }
         }
 
 
-        fclose(cc1File);
-        fclose(cc2File);
+        fclose(oldarch);
+        fclose(newarch);
 
-        printf("Se ha modificado el archivo cc2File.txt");
+        printf("Se ha modificado el archivo newarch.txt");
         return 0;    
     }
 
